@@ -1,0 +1,154 @@
+.App {
+  /*text-align: center;*/
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #ddf3f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.Chat-List::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+
+.Chat-List {
+  scrollbar-width: none; /* firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  height: 70vmin;
+  width: 75vmin;
+  overflow-x:hidden;
+  overflow-y:auto;
+  /*pointer-events: none;*/
+}
+
+.Chat-Me {
+    text-align:right;
+    margin-left: 25vmin;
+    max-width: 50vmin;
+    height: auto;  
+    word-wrap:break-word;  
+    word-break:break-all;  
+    overflow: hidden;
+}
+
+.Chat-Me span{
+      background-color: #fff;
+      padding: 8px 8px;
+      display: inline-block;
+      border-radius: 8px;
+      margin:10px 10px 10px 0;
+      position: relative;    
+  }
+
+ 
+
+.Chat-Me span::after {
+      content: '';
+      border: 8px solid #ffffff00;
+      border-left: 8px solid #fff;
+      position: absolute;
+      top: 6px;
+      right: -16px;
+}
+
+.Chat-GiGi {
+    text-align:left;
+    max-width: 50vmin;
+    height: auto;  
+    word-wrap:break-word;  
+    word-break:break-all;  
+    overflow: hidden;
+}
+
+.Chat-GiGi span{
+      background-color: #fff;
+      padding: 8px 8px;
+      display: inline-block;
+      border-radius: 8px;
+      margin:10px 0 10px 10px;
+      position: relative;    
+  }
+
+ 
+
+.Chat-GiGi span::after {
+      content: '';
+      border: 8px solid #ffffff00;
+      border-right: 8px solid #fff;
+      position: absolute;
+      top: 6px;
+      left: -16px;
+}
+
+.inputLine::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
+.inputLine{
+    scrollbar-width: none; /* firefox */
+      -ms-overflow-style: none; /* IE 10+ */  
+      min-height: 1vmin;
+      max-height: 12vmin;
+      width: 65vmin;
+      /*padding: .375rem .75rem;*/
+      border-radius: .25rem;
+      border: 1px solid #ced4da;
+      margin-right:10px;
+      font-size: 16px;
+      position:absolute;
+      bottom:3vmin;
+      left:75vmin;
+}
+/*.inputLine::focus{
+    border-style:solid;
+    border-color: #ced4da;
+    box-shadow: 0 0 5px #03a9f4;
+}*/
+
+  .button{
+    /*padding: .375rem .75rem;*/
+    height: 3vmin;
+    border-radius: .25rem;
+    border: 1px solid #ced4da;
+      position:absolute;
+      bottom:3vmin;
+      left:145vmin;    
+  }
+/*  .button:hover{
+     border-color: #03a9f4;
+  }
+  .button:active {
+    background:#03a9f4;
+  }*/
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
