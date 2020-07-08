@@ -1,9 +1,11 @@
 .App {
   /*text-align: center;*/
+  background-color: #e1f5fe;
+  height: 100vh;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 40vh;
   pointer-events: none;
 }
 
@@ -36,15 +38,15 @@
   scrollbar-width: none; /* firefox */
   -ms-overflow-style: none; /* IE 10+ */
   height: 60vh;
-  width: 90vw;
-  top: 10vh;
+  width: 90%;
+  top: 10%;
   overflow-x:hidden;
   overflow-y:auto;
   /*pointer-events: none;*/
 }
 
 .Chat-Me {
-    width: 90vw; 
+    width: 90%; 
     height: auto;   
     word-wrap:break-word;  
     word-break:break-all;  
@@ -53,13 +55,13 @@
 
 .Chat-Me span{
   color:white;
-      max-width: 50vmin;
+      max-width: 50%;
       float: right;
       background-color: #4285f4;
-      padding: 8px 8px;
+      padding: 2% 2%;
       display: inline-block;
       border-radius: 8px;
-      margin:10px 10px 10px 0;
+      margin:2% 2% 2% 0;
       position: relative;    
   }
 
@@ -67,15 +69,15 @@
 
 .Chat-Me span::after {
       content: '';
-      border: 8px solid #ffffff00;
-      border-left: 8px solid #4285f4;
+      border: 2% solid #ffffff00;
+      border-left: 2% solid #4285f4;
       position: absolute;
-      top: 16px;
-      right: -15px;
+      top: 4%;
+      right: 4%;
 }
 
 .Chat-GiGi {
-    width: 90vw;
+    width: 90%;
     color: black;
     height: auto;  
     word-wrap:break-word;  
@@ -84,13 +86,13 @@
 }
 
 .Chat-GiGi span{
-      max-width: 50vmin;
+      max-width: 50%;
       float: left;
       background-color: #c5e7f1;
-      padding: 8px 8px;
+      padding: 2% 2%;
       display: inline-block;
       border-radius: 8px;
-      margin:10px 0 10px 10px;
+      margin:2% 0 2% 2%;
       position: relative;    
   }
 
@@ -98,11 +100,11 @@
 
 .Chat-GiGi span::after {
       content: '';
-      border: 8px solid #ffffff00;
-      border-right: 8px solid #c5e7f1;
+      border: 2% solid #ffffff00;
+      border-right: 2% solid #c5e7f1;
       position: absolute;
-      top: 16px;
-      left: -16px;
+      top: 4%;
+      left: -4%;
 }
 
 .inputLine::-webkit-scrollbar {

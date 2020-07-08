@@ -1,208 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/styles';
-import Button from '@material-ui/core/Button';
-import AppBar from '@material-ui/core/AppBar';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import TextField from '@material-ui/core/TextField';
-import Icon from '@material-ui/core/Icon';
-import SaveIcon from '@material-ui/icons/Save';
-import { flexbox } from '@material-ui/system';
-import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-const styles = (theme) => ({
-  Container: {
-      height: "100vh",
-      backgroundColor: "#e1f5fe",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      fontZize: "calc(10px + 2vmin)",
-  },
-  viewButtonLabel: {
-    textTransform: "none",
-    maxWidth: '80vw',
-    overflow: 'hidden',
-    wordWrap:"break-word",
-    wordBreak:"break-all",  
-  },
-  TextField: {
-    width: '80vw',
-    marginLeft: "5vw",
-    marginBottom: "1vw"
-  },
-  ButtonList: {
-    width: '80vw',
-    marginLeft: "5vw",
+import GiGiApp from './GigiApp'
+import Navbar from './components/Navbar'
+import Landing from './components/Landing'
+import Login from './components/Login'
+import Register from './components/Register'
+import Profile from './components/Profile'
 
-  },
-  top: {
-    top: '5vh',
-    position: "fixed",
-  },
-  chatlist: {
-    flexGrow: "1",
-    flexShrink: "1",
-  },
-
-});
-
-
-class GiGiApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { items: [], text: '', options: []};
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
-    {
-      const newOption = {
-        text: "test1111111",
-        id: 0,
-      };    
-      this.state.options = this.state.options.concat(newOption); 
-
-      const newOption2 = {
-        text: "test222222",
-        id: 1,
-      };    
-      this.state.options = this.state.options.concat(newOption2); 
-
-      const newOption3 = {
-        text: "test3",
-        id: 2,
-      };    
-      this.state.options = this.state.options.concat(newOption3); 
-    }
-  }
-
-
+class App extends Component {
   render() {
-
-    const {classes} = this.props;
-
     return (
-      <div style={{ height: '100vh' }}>
-      <Box display="flex" flexDirection="column" className={classes.Container}>
-        <Box><h3>GiGi:Always Here </h3></Box>
-        <Container flexGrow = {1} flexShrink = {1} onSubmit={this.handleSubmit}>
-        <ChatList items={this.state.items} />
-        <OptionList options = {this.state.options} classes = {classes} onClick = {i=>this.optionClick(i)}/>
-          <form noValidate autoComplete="off">
-            <TextField
-              fullWidth
-              multiline
-              rowsMax={4}
-              value={this.state.text}
-              onChange={this.handleChange}
-              className = {classes.TextField}
-            />
-          </form>
-          <Button variant="contained" color="primary" style={{float:"right", width: "15vw"}} ref={(button)=>this.buttonRef=(button)} onClick={this.handleSubmit}>
-            Send
-          </Button>
-          </Container>
-        </Box>
+      
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Route exact path="/" component={GiGiApp}/>
+          <div className="container">
+            <Route exact path="/chatpage" component={GiGiApp} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/profile" component={Profile}/>
+          </div>
         </div>
-    );
-  }
-
-  optionClick(i) {
-    const newItem = {
-      text: this.state.options[i].text,
-      id: Date.now(),
-      isGiGi: false,
-    };
-    this.setState(state => ({
-      items: state.items.concat(newItem),
-    }));    
-  }
-
-  handleChange(e) {
-    this.setState({ text: e.target.value });
-    if (this.inputRef) {
-        console.log('resizing...')
-        this.inputRef.style.height = 'auto';
-        this.inputRef.style.height = this.inputRef.scrollHeight + 'px';
-    }
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    if (this.state.text.length === 0) {
-      return;
-    }
-    const newItem = {
-      text: this.state.text,
-      id: Date.now(),
-      isGiGi: Date.now()%2,
-    };
-    this.setState(state => ({
-      items: state.items.concat(newItem),
-      text: ''
-    }));
+      </Router>
+    )
   }
 }
 
-GiGiApp.propTypes = {
-  classes: PropTypes.object.isRequired
-};
+export default App
 
-
-class OptionList extends React.Component {
-
-
-  render() {
-    
-    var length = 0;
-    const chars = this.props.options.map(item => {
-      if(item.text.length >= 10) length = 1;
-      return (<Button size = "medium" disableFocusRipple key={item.id} onClick={() => this.props.onClick(item.id)}> <div className={this.props.classes.viewButtonLabel}><span> {item.text}</span> </div></Button>);
-    }); 
-    
-    if(length == 1) {
-      return (
-      <ButtonGroup orientation="vertical" className={this.props.classes.ButtonList} color="default" ref={ (node) => this.contentNode = (node) }> {chars} </ButtonGroup>
-    );
-    }
-    else 
-    return (
-      <ButtonGroup fullWidth className={this.props.classes.ButtonList} color="default" ref={ (node) => this.contentNode = (node) }> {chars} </ButtonGroup>
-    );
-  }
-}
-
-class ChatList extends React.Component {
-
-  componentDidMount() {
-    this.contentNode.scrollTop = this.contentNode.scrollHeight;
-  }
-
-  componentDidUpdate() {
-    this.contentNode.scrollTop = this.contentNode.scrollHeight;
-  }
-
-  render() {
-
-    const chars = this.props.items.map(item => {
-      // const desc = item.isGiGi ?'GiGi' :'Me';
-      if (item.isGiGi)      
-        return (<div key={item.id} className = "Chat-GiGi" contenteditable> <span > {item.text} </span></div>);
-      else 
-        return (<div key={item.id} className = "Chat-Me" contenteditable> <span > {item.text} </span></div>);
-    }); 
-    
-
-    return (
-      <Container className = "Chat-List" ref={ (node) => this.contentNode = (node) }> {chars} </Container>
-    );
-  }
-}
-
-export default withStyles(styles)(GiGiApp);
