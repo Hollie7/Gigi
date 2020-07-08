@@ -14,7 +14,6 @@
 }
 
 .App-header {
-  background-color: #ddf3f5;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,25 +35,27 @@
 .Chat-List {
   scrollbar-width: none; /* firefox */
   -ms-overflow-style: none; /* IE 10+ */
-  height: 70vmin;
-  width: 75vmin;
+  height: 60vh;
+  width: 90vw;
+  top: 10vh;
   overflow-x:hidden;
   overflow-y:auto;
   /*pointer-events: none;*/
 }
 
 .Chat-Me {
-    text-align:right;
-    margin-left: 25vmin;
-    max-width: 50vmin;
-    height: auto;  
+    width: 90vw; 
+    height: auto;   
     word-wrap:break-word;  
     word-break:break-all;  
     overflow: hidden;
 }
 
 .Chat-Me span{
-      background-color: #fff;
+  color:white;
+      max-width: 50vmin;
+      float: right;
+      background-color: #4285f4;
       padding: 8px 8px;
       display: inline-block;
       border-radius: 8px;
@@ -67,15 +68,15 @@
 .Chat-Me span::after {
       content: '';
       border: 8px solid #ffffff00;
-      border-left: 8px solid #fff;
+      border-left: 8px solid #4285f4;
       position: absolute;
-      top: 6px;
-      right: -16px;
+      top: 16px;
+      right: -15px;
 }
 
 .Chat-GiGi {
-    text-align:left;
-    max-width: 50vmin;
+    width: 90vw;
+    color: black;
     height: auto;  
     word-wrap:break-word;  
     word-break:break-all;  
@@ -83,7 +84,9 @@
 }
 
 .Chat-GiGi span{
-      background-color: #fff;
+      max-width: 50vmin;
+      float: left;
+      background-color: #c5e7f1;
       padding: 8px 8px;
       display: inline-block;
       border-radius: 8px;
@@ -96,9 +99,9 @@
 .Chat-GiGi span::after {
       content: '';
       border: 8px solid #ffffff00;
-      border-right: 8px solid #fff;
+      border-right: 8px solid #c5e7f1;
       position: absolute;
-      top: 6px;
+      top: 16px;
       left: -16px;
 }
 
@@ -126,12 +129,16 @@
     border-color: #ced4da;
     box-shadow: 0 0 5px #03a9f4;
 }*/
+.optionbutton{
+  text-transform: "none";
+/*  height: 3vmin;
+  font-size: 16px;*/
+}
 
-  .button{
-    /*padding: .375rem .75rem;*/
-    height: 3vmin;
-    border-radius: .25rem;
-    border: 1px solid #ced4da;
+
+
+.button{
+      height: 3vmin;
       position:absolute;
       bottom:3vmin;
       left:145vmin;    
